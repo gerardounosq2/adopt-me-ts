@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AdoptedPetContext from "./AdoptedPetContext";
-import { PetApiResponse } from "./ApiResponsesTypes";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import fetchPet from "./fetchPet";
@@ -16,8 +15,8 @@ const Details = () => {
   }
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const results = useQuery<PetApiResponse>(["details", id], fetchPet);
-  // eslint-disable-next-line @typescript-eslint-/no-usused-vars
+  const results = useQuery(["details", id], fetchPet);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
 
   if (results.isLoading) {
